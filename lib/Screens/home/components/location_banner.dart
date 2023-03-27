@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:solar_saver/components/location_model.dart';
 import '../../../size_config.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:solar_saver/components/location.dart';
 import 'package:solar_saver/components/networking.dart';
 
-const apiKey = 'dD8VRdUfgDiTEJzdX7BaXZMiNp15aIEB8nfi3dhM';
-const locApiKey = 'pk.ce544ca3797558b3c4d838970d99400f';
-const NREL_URL = 'https://api.openweathermap.org/data/2.5/weather';
-const API_URL= 'https://us1.locationiq.com/v1/reverse';
-var ar;
-class ApiNeed
-{
-  var s_capacity=0;
-  var m_type=0;
-  var s_losses=0;
-  var s_array_type=0;
-  var s_tilt=0;
-  var s_azimuth=0;
 
-}
 
 Future<Position> _determinePosition() async {
   bool serviceEnabled;
@@ -58,31 +45,33 @@ Future<Position> _determinePosition() async {
 }
 
 
-class LocationBanner extends StatelessWidget {
-  const LocationBanner({
-    Key? key,
-  }) : super(key: key);
-  Future<dynamic> getLocationSolarData() async {
-    Location location = Location();
-    await location.getCurrentLocation();
+class LocationBanner extends StatefulWidget {
+  LocationBanner({this.locationData});
+  final locationData;
 
-    NetworkHelper networkHelper = NetworkHelper(
-        '$NREL_URL?lat=${location.latitude}&lon=${location.longitude}&api_key=$apiKey&format=json&');
+  @override
+  State<LocationBanner> createState() => _LocationBannerState();
+}
 
-    var solarData = await networkHelper.getData();
-    return solarData;
-  }
+class _LocationBannerState extends State<LocationBanner> {
+  LocationModel loc = LocationModel();
+ String cityName='';
 
-  Future<dynamic> getLocation() async {
-    Location location = Location();
-    await location.getCurrentLocation();
+ @override
+  void initState(){
+  super.initState();
 
-    NetworkHelper networkHelper = NetworkHelper(
-        '$API_URL?lat=${location.latitude}&lon=${location.longitude}&key=$locApiKey&format=json');
+  updateUI(widget.locationData);
+ }
 
-    var locationData = await networkHelper.getData();
-    // return locationData;
-    ar=await getLocation();
+  void updateUI(dynamic locationCity) {
+    setState(() {
+      if (locationCity == null) {
+        cityName = '';
+        return;
+      }
+      cityName = locationCity['address']['county'];
+    });
   }
 
   @override
@@ -99,22 +88,32 @@ class LocationBanner extends StatelessWidget {
         color: Color(0xFF4A3298),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text.rich(
-        TextSpan(
-          style: TextStyle(color: Colors.white,
-          fontWeight: FontWeight.bold),
-          children: [
-            TextSpan(text: "You're at\n"),
+      child: Row(
+        children: [
+          Container(
+          child:TextButton(onPressed:() async {
+          var locationCity = await loc.getLocation();
+          updateUI(locationCity);
+          }, child: Icon(Icons.ac_unit)
+          )),
+          Text.rich(
             TextSpan(
-              text: '$ar',
-              style: TextStyle(
-                fontSize: getProportionateScreenWidth(24),
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold),
+              children: [
+                TextSpan(text: "You're at\n"),
+                TextSpan(
+                  text: '$cityName',
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(24),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        ],
+      )
     );
   }
 }

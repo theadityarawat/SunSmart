@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:solar_saver/Screens/home/components/solar_output.dart';
 import 'package:solar_saver/Screens/splash/splash_screen.dart';
 import 'package:solar_saver/Screens/home/home_screen.dart';
 // We use name route
@@ -6,4 +7,5 @@ import 'package:solar_saver/Screens/home/home_screen.dart';
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
   HomeScreen.routeName: (context) =>HomeScreen(),
+  // SolarOutput.routeName: (context) =>SolarOutput(),
 };

@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
                     Spacer(),
                     Container(
                       alignment: Alignment.center,
-                      child: Text('Predict efficiency of Solar Panels at your Location',
+                      child: Text('World\'s first app to determine efficiency of Solar Panels using SAM',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,

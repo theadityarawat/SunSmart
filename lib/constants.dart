@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import '/size_config.dart';
 
-const kMainColor = Color(0xFF000000);
-const kMainLightColor = Color(0xFFFFECDF);
+const kMainColor = Color(0xFF525F71);
+const kMainLightColor = Color(0xFFA1F6A0);
+const kLabelTextStyle = TextStyle(
+  fontSize: 20.0,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+const kBoldStyle = TextStyle(
+  fontSize: 20,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+
 const kMainGradient = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
@@ -19,18 +30,6 @@ final headingStyleText = TextStyle(
   color: Colors.black,
   height: 1.5,
 );
-
-const time = Duration(milliseconds: 250);
-//error statements
-final RegExp kValidEmail = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-const String kNoMail = "Please Enter your email";
-const String kWrongEmailFormat = "Please Enter Valid Email";
-const String kNoPass = "Please Enter your password";
-const String kWeakPass = "Password is too short";
-const String kPassMismatch = "Passwords don't match";
-const String kNoName = "Please Enter your name";
-const String kNoNumber = "Please Enter your phone number";
-const String kNoAddress = "Please Enter your address";
 
 final otpStyle = InputDecoration(
   contentPadding:

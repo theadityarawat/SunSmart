@@ -26,7 +26,7 @@ class _SolarOutputState extends State<SolarOutput> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
-        title: Text('Solar Output', style: kLabelTextStyle.copyWith(fontSize: 35),),
+        title: Text('Solar Output', style: kLabelTextStyle.copyWith(fontSize: 35, fontFamily: 'Montserrat Bold'),),
         centerTitle: true,
         backgroundColor: kMainColor,
         iconTheme: IconThemeData(color: Colors.white),

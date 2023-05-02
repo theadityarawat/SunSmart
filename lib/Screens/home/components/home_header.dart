@@ -13,13 +13,13 @@ class HomeHeader extends StatelessWidget {
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            child: Image.asset('logo.png', height: getProportionateScreenHeight(25),),
-          )
-          
-        ],
+        Align(
+        alignment: Alignment.bottomCenter,
+        child: Image(image: AssetImage('images/logo.png'),height: getProportionateScreenHeight(65),),)
+      ],
       ),
     );
   }

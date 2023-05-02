@@ -291,7 +291,7 @@ class _InputFormState extends State<InputForm> {
             ),
           ],
         ),
-        SizedBox(height: getProportionateScreenHeight(48.8),),
+        SizedBox(height: getProportionateScreenHeight(24),),
         Align(
           alignment: Alignment.bottomCenter,
             child: lastButton(seen: 'Continue', onTapp: () {navigateToSolarOutput(context);}))

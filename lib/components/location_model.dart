@@ -34,7 +34,6 @@ class LocationModel {
 
     NetworkHelper networkHelper = NetworkHelper(
         Uri.parse('$API_URL?lat=${location.latitude}&lon=${location.longitude}&key=$locApiKey&format=json'));
-       //Uri.parse('https://us1.locationiq.com/v1/reverse?lat=28.1405741&lon=77.3259802&key=pk.ce544ca3797558b3c4d838970d99400f&format=json'));
 
     var locationData = await networkHelper.getData();
     print(locationData);

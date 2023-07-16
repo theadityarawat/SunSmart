@@ -13,6 +13,7 @@ class Body extends StatefulWidget {
   State<Body> createState() => _BodyState();
 }
 
+
 class _BodyState extends State<Body> {
 
   Widget build(BuildContext context) {
@@ -99,7 +100,7 @@ class _LocationBannerState extends State<LocationBanner> {
         cityName = 'Default';
         return;
       }
-      cityName = locationCity['address']['state_district'];
+      cityName = locationCity['address']['state'];
     });
   }
 

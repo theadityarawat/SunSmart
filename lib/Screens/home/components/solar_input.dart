@@ -38,11 +38,11 @@ class _InputFormState extends State<InputForm> {
         longitude=0.0;
         return;
       }
-      latitude = double.parse(locationCity['lat']);
-      // latitude = 27.285890739264094;
+      // latitude = double.parse(locationCity['lat']);
+      latitude = 27.285890739264094;
       print(latitude);
-      longitude = double.parse(locationCity['lon']);
-      // longitude = 75.17452041931212;
+      // longitude = double.parse(locationCity['lon']);
+      longitude = 75.17452041931212;
       print(longitude);
     });
   }
@@ -316,9 +316,12 @@ class _InputFormState extends State<InputForm> {
         ),
       );
     } else {
+      if(solarData == null)
+        print("Error is at the output");
+      else{
       showDialog(context: context, builder: (BuildContext context) {
         return AlertDialog(title: Text('Invalid',));
-      });
+      });}
     }
   }
 }
